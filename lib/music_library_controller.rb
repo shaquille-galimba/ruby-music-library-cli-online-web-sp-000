@@ -83,8 +83,7 @@ class MusicLibraryController
     input = gets.strip.to_i
 
     if input > 0 && input <= Song.all.uniq.length
-      songs = Song.all.sort_by{|s| s.name}.uniq
-      song = songs[input-1]
+      song = Song.all.sort_by{|s| s.name}.uniq[input - 1]
       puts "Playing #{song.name} by #{song.artist.name}"
     end
   end
