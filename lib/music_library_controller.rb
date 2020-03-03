@@ -39,7 +39,7 @@ class MusicLibraryController
   end
 
   def list_songs
-    Song.all.sort_by{|s| s.name}.uniq.each_with_index do |song, idx|
+    Song.all.sort_by{|s| s.name}.each_with_index do |song, idx|
       puts "#{idx+1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
     end
   end
@@ -82,7 +82,7 @@ class MusicLibraryController
     puts "Which song number would you like to play?"
     input = gets.strip.to_i
 
-    if input > 0 && input <= Song.all.uniq.length
+    if input > 0 && input <= Song.all.length
       songs = Song.all.sort_by{|s| s.name}.uniq
       song = songs[input-1]
       puts "Playing #{song.name} by #{song.artist.name}"
